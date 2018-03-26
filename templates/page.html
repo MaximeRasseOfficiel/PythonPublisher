@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+    {% include 'header.html' %}
+    <body>
+    {% include 'menu.html' %}
+    <div class="text-center">
+        <h{{page["taille"]}}>
+            {{page["titre"]}}
+        </h{{page["taille"]}}>
+        <div>  
+            <img class="img-thumbnail" height="100" width="400" src="{{chemin_image}}">
+        </div>
+        <div class="col-lg-4 col-sm-offset-4">
+            <div class="text-justify">
+            <br>
+            <br>
+                {{page["article"]}}
+                {% if pseudo %}
+                    <br>
+                    <br>
+                    <a href="/modifpage/{{page_number}}">Modifier votre page</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    </body>
+		    {% include 'bottom.html' %}
+</html>

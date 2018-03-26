@@ -1,0 +1,41 @@
+{# siteDynamiquePython/PythonPublisher/templates/Accueil.html: #}
+
+<!DOCTYPE html>
+<html lang="fr">
+    {% include 'header.html' %}
+    <body>
+    {% include 'menu.html' %}   
+    <div class="container-fluid">
+        <h1 class="text-center">
+            Bienvenue sur Pyhton Publisher
+            <br>
+            <br>
+        </h1>
+        <div class="centrer">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-success">
+                <ul>
+                {% for m in messages %}
+                    <li>{{ m }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+        </div>            
+        <div class="text-center">
+            <img class="text-center" src="/static/python.png">
+            <br>
+            <br>
+            <br>
+            <img class="text-center" height="100" width="100" src="/static/orange.png">
+            <br>
+            <br>
+            <h4 class="text-center"> Réalisé par Lamyae LAAROUSSI, Maxime RASSE et Yusuf MAKANJUOLA </h3>
+        </div>
+    </div>
+    </body>
+
+	    {% include 'bottom.html' %}
+</html>

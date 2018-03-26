@@ -1,0 +1,48 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{url_for('Accueil')}}">Python Publisher</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown"> 
+                <a class="dropdown-toggle" data-toggle="dropdown" >Les Publishers<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    {% for sousListes in liste %}
+                        <li class="dropdown-submenu">
+                                <img widht="20" height="20" src="/static/selectuser.png">
+                                <a tabindex="-1" class="test" href="#">{{sousListes[0]}} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">                                
+                                {% for titre in sousListes[1:] %}
+                                    {% if titre %}
+                                        <li><a href="/pages/{{sousListes[0]}}/{{loop.index}}">{{titre}}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}                                
+                            </ul>
+                        </li>            
+                    {% endfor %}    
+                </ul>
+            </li>
+                {% if pseudo %}
+            <li><a class="active" href="/compte">Bienvenue : {{pseudo}}</a></li>
+            <li><a href="{{url_for('Formulaire')}}">Créer Page</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="{{url_for('ModifPage',pagenumber=pagenumber)}}">Modifier Page<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                {% for Pages in listePages %}
+                <li>
+                    <a tabindex="-1" class="test" href="/modifpage/{{Pages}}">{{Pages}}</a>
+                </li>
+                {% endfor %}
+                </ul>
+            </li>
+            <li><a href="{{url_for('Pages')}}">Vos pages</a></li>
+            <li><a href="{{url_for('Logout')}}">Deconnexion</a></li>
+                {% endif %}
+                {% if not pseudo %}
+            <li><a href="{{url_for('Inscriptions')}}">Inscription</a></li>
+            <li><a href="{{url_for('Connexion')}}">Connexion</a></li>
+                {% endif %}
+        </ul>
+    </div>
+</nav>    
